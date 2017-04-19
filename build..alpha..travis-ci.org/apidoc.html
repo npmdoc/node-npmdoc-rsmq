@@ -69,6 +69,15 @@
 
         <li>
 
+            <a class="apidocElementLiA" href="#apidoc.element.rsmq.rsmq">
+            function <span class="apidocSignatureSpan"></span>rsmq
+            <span class="apidocSignatureSpan">(options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
             <a class="apidocElementLiA" href="#apidoc.element.rsmq.EventEmitter">
             function <span class="apidocSignatureSpan">rsmq.</span>EventEmitter
             <span class="apidocSignatureSpan">()</span>
@@ -113,6 +122,79 @@
 <div class="apidocSectionDiv">
 <h1><a href="#apidoc.module.rsmq" id="apidoc.module.rsmq">module rsmq</a></h1>
 
+
+
+
+    <h2>
+        <a href="#apidoc.element.rsmq.rsmq" id="apidoc.element.rsmq.rsmq">
+        function <span class="apidocSignatureSpan"></span>rsmq
+        <span class="apidocSignatureSpan">(options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function RedisSMQ(options) {
+  var opts, ref, ref1;
+  if (options == null) {
+    options = {};
+  }
+  this._initErrors = bind(this._initErrors, this);
+  this._handleError = bind(this._handleError, this);
+  this.setQueueAttributes = bind(this.setQueueAttributes, this);
+  this.sendMessage = bind(this.sendMessage, this);
+  this._receiveMessage = bind(this._receiveMessage, this);
+  this._popMessage = bind(this._popMessage, this);
+  this.receiveMessage = bind(this.receiveMessage, this);
+  this.popMessage = bind(this.popMessage, this);
+  this.listQueues = bind(this.listQueues, this);
+  this.getQueueAttributes = bind(this.getQueueAttributes, this);
+  this.deleteQueue = bind(this.deleteQueue, this);
+  this.deleteMessage = bind(this.deleteMessage, this);
+  this.createQueue = bind(this.createQueue, this);
+  this._changeMessageVisibility = bind(this._changeMessageVisibility, this);
+  this.changeMessageVisibility = bind(this.changeMessageVisibility, this);
+  this._getQueue = bind(this._getQueue, this);
+  this.quit = bind(this.quit, this);
+  opts = _.extend({
+    host: &#x22;127.0.0.1&#x22;,
+    port: 6379,
+    options: {},
+    client: null,
+    ns: &#x22;rsmq&#x22;
+  }, options);
+  this.redisns = opts.ns + &#x22;:&#x22;;
+  if (((ref = opts.client) != null ? (ref1 = ref.constructor) != null ? ref1.name : void 0 : void 0) === &#x22;RedisClient&#x22;) {
+    this.redis = opts.client;
+  } else {
+    this.redis = RedisInst.createClient(opts.port, opts.host, opts.options);
+  }
+  this.connected = this.redis.connected || false;
+  if (this.connected) {
+    this.emit(&#x22;connect&#x22;);
+    this.initScript();
+  }
+  this.redis.on(&#x22;connect&#x22;, (function(_this) {
+    return function() {
+      _this.connected = true;
+      _this.emit(&#x22;connect&#x22;);
+      _this.initScript();
+    };
+  })(this));
+  this.redis.on(&#x22;error&#x22;, (function(_this) {
+    return function(err) {
+      if (err.message.indexOf(&#x22;ECONNREFUSED&#x22;)) {
+        _this.connected = false;
+        _this.emit(&#x22;disconnect&#x22;);
+      } else {
+        console.error(&#x22;Redis ERROR&#x22;, err);
+        _this.emit(&#x22;error&#x22;);
+      }
+    };
+  })(this));
+  this._initErrors();
+  return;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
 
 
 
