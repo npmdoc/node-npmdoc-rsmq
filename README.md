@@ -1,9 +1,14 @@
-# api documentation for  [rsmq (v0.8.2)](https://github.com/smrchy/rsmq#readme)  [![npm package](https://img.shields.io/npm/v/npmdoc-rsmq.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-rsmq) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-rsmq.svg)](https://travis-ci.org/npmdoc/node-npmdoc-rsmq)
+# npmdoc-rsmq
+
+#### api documentation for  [rsmq (v0.8.2)](https://github.com/smrchy/rsmq#readme)  [![npm package](https://img.shields.io/npm/v/npmdoc-rsmq.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-rsmq) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-rsmq.svg)](https://travis-ci.org/npmdoc/node-npmdoc-rsmq)
+
 #### A really simple message queue based on Redis
 
-[![NPM](https://nodei.co/npm/rsmq.png?downloads=true)](https://www.npmjs.com/package/rsmq)
+[![NPM](https://nodei.co/npm/rsmq.png?downloads=true&downloadRank=true&stars=true)](https://www.npmjs.com/package/rsmq)
 
-[![apidoc](https://npmdoc.github.io/node-npmdoc-rsmq/build/screenCapture.buildNpmdoc.browser._2Fhome_2Ftravis_2Fbuild_2Fnpmdoc_2Fnode-npmdoc-rsmq_2Ftmp_2Fbuild_2Fapidoc.html.png)](https://npmdoc.github.io/node-npmdoc-rsmq/build/apidoc.html)
+- [https://npmdoc.github.io/node-npmdoc-rsmq/build/apidoc.html](https://npmdoc.github.io/node-npmdoc-rsmq/build/apidoc.html)
+
+[![apidoc](https://npmdoc.github.io/node-npmdoc-rsmq/build/screenCapture.buildCi.browser.%252Ftmp%252Fbuild%252Fapidoc.html.png)](https://npmdoc.github.io/node-npmdoc-rsmq/build/apidoc.html)
 
 ![npmPackageListing](https://npmdoc.github.io/node-npmdoc-rsmq/build/screenCapture.npmPackageListing.svg)
 
@@ -17,8 +22,7 @@
 
 {
     "author": {
-        "name": "P. Liess",
-        "email": "smrchy+npm@gmail.com"
+        "name": "P. Liess"
     },
     "bugs": {
         "url": "https://github.com/smrchy/rsmq/issues"
@@ -54,15 +58,13 @@
     "license": "MIT",
     "maintainers": [
         {
-            "name": "smrchy",
-            "email": "smrchy@gmail.com"
+            "name": "smrchy"
         }
     ],
     "name": "rsmq",
     "optionalDependencies": {
         "hiredis": "^0.5.0"
     },
-    "readme": "ERROR: No README data found!",
     "repository": {
         "type": "git",
         "url": "git+ssh://git@github.com/smrchy/rsmq.git"
@@ -72,76 +74,6 @@
     },
     "version": "0.8.2"
 }
-```
-
-
-
-# <a name="apidoc.tableOfContents"></a>[table of contents](#apidoc.tableOfContents)
-
-#### [module rsmq](#apidoc.module.rsmq)
-1.  boolean <span class="apidocSignatureSpan">rsmq.</span>usingDomains
-1.  [function <span class="apidocSignatureSpan">rsmq.</span>EventEmitter ()](#apidoc.element.rsmq.EventEmitter)
-1.  [function <span class="apidocSignatureSpan">rsmq.</span>init ()](#apidoc.element.rsmq.init)
-1.  [function <span class="apidocSignatureSpan">rsmq.</span>listenerCount (emitter, type)](#apidoc.element.rsmq.listenerCount)
-1.  number <span class="apidocSignatureSpan">rsmq.</span>defaultMaxListeners
-1.  object <span class="apidocSignatureSpan">rsmq.</span>__super__
-
-
-
-# <a name="apidoc.module.rsmq"></a>[module rsmq](#apidoc.module.rsmq)
-
-#### <a name="apidoc.element.rsmq.EventEmitter"></a>[function <span class="apidocSignatureSpan">rsmq.</span>EventEmitter ()](#apidoc.element.rsmq.EventEmitter)
-- description and source-code
-```javascript
-function EventEmitter() {
-  EventEmitter.init.call(this);
-}
-```
-- example usage
-```shell
-n/a
-```
-
-#### <a name="apidoc.element.rsmq.init"></a>[function <span class="apidocSignatureSpan">rsmq.</span>init ()](#apidoc.element.rsmq.init)
-- description and source-code
-```javascript
-init = function () {
-  this.domain = null;
-  if (EventEmitter.usingDomains) {
-    // if there is an active domain, then attach to it.
-    domain = domain || require('domain');
-    if (domain.active && !(this instanceof domain.Domain)) {
-      this.domain = domain.active;
-    }
-  }
-
-  if (!this._events || this._events === Object.getPrototypeOf(this)._events) {
-    this._events = new EventHandlers();
-    this._eventsCount = 0;
-  }
-
-  this._maxListeners = this._maxListeners || undefined;
-}
-```
-- example usage
-```shell
-n/a
-```
-
-#### <a name="apidoc.element.rsmq.listenerCount"></a>[function <span class="apidocSignatureSpan">rsmq.</span>listenerCount (emitter, type)](#apidoc.element.rsmq.listenerCount)
-- description and source-code
-```javascript
-listenerCount = function (emitter, type) {
-  if (typeof emitter.listenerCount === 'function') {
-    return emitter.listenerCount(type);
-  } else {
-    return listenerCount.call(emitter, type);
-  }
-}
-```
-- example usage
-```shell
-n/a
 ```
 
 
